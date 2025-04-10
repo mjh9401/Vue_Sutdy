@@ -7,7 +7,7 @@ const {VueLoaderPlugin} = require('vue-loader');
 //export
 module.exports={
     resolve : {
-        extensions:['.js,','.vue'],
+        extensions:['.js,','.vue','...'],
         // 경로별칭
         alias:{
             '~' : path.resolve(__dirname,'src'),
@@ -60,7 +60,10 @@ module.exports={
         }),
         new CopyPlugin({
             patterns:[
-                {from: 'static'}
+                {
+                    from: 'static',
+                    noErrorOnMissing: true
+                }
             ]
         }),
         new VueLoaderPlugin()
